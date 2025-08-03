@@ -6,7 +6,7 @@ Official landing page for HackClub Binus School Semarang – quick access to all
 
 1. Edit `index.html`
 2. Commit changes to `main`
-3. GitHub Pages will auto-update the site at: https://hackclub-bss.github.io/landing
+3. GitHub Pages will auto-update the site at: [https://hackclub-bss.github.io/landing](https://hackclub-binus-school-semarang.github.io/HackClub-BSS-Landing-Page/)
 
 
-View live: [https://hackclub-bss.github.io/landing](https://hackclub-bss.github.io/landing)
+View live: [https://hackclub-bss.github.io/landing](https://hackclub-binus-school-semarang.github.io/HackClub-BSS-Landing-Page/)
