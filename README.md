@@ -1,6 +1,6 @@
-# HackClub BSS Landing Page
+# Hack Club BSS Landing Page
 
-Official landing page for HackClub Binus School Semarang – quick access to all club links, resources, events, and forms.
+Official landing page for Hack Club Binus School Semarang – quick access to all club links, resources, events, and forms.
 
 ## How to Update This Page
 
