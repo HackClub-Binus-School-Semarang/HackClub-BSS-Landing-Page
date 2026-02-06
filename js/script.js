@@ -86,3 +86,9 @@ document.querySelectorAll('[data-link]').forEach(el => {
     }
   }
 });
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && faqModal.style.display === 'flex') {
+    closeFAQ();
+  }
+});
