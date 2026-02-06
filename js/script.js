@@ -1,4 +1,3 @@
-// THEME TOGGLE
 const themeToggle = document.getElementById('theme-toggle');
 const themeIcon = document.getElementById('theme-icon');
 
@@ -23,7 +22,6 @@ themeToggle.addEventListener('click', () => {
   setIcon(!isDark);
 });
 
-// FAQ MODAL
 const faqButton = document.getElementById('faq-button');
 const faqModal = document.getElementById('faq-modal');
 faqButton.addEventListener('click', (e) => {
@@ -37,11 +35,8 @@ faqModal.addEventListener('click', function (e) {
   if (e.target === faqModal) closeFAQ();
 });
 
-// LINK ASSIGNMENTS
 const links = {
   register: "https://forms.gle/YEDzSUoqXq4NubB86",
-  SOM: "https://summer.hack.club/cn0",
-  Athena: "https://athena.hack.club/cn0",
   HackClub: "https://hackclub.com",
   Instagram: "https://instagram.com/hackclub.bss",
   email: "mailto:hackclub.bss+general@gmail.com?subject=Hack%20Club%20Inquiry&body=Hi%20Hack%20Club%20Organizers%2C%0D%0A%0D%0AI%27m%20interested%20in%20joining%20Hack%20Club%20or%20learning%20more%20about%20it.%20Could%20you%20please%20share%20more%20information%3F%0D%0A%0D%0AThank%20you%21",
