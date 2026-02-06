@@ -35,12 +35,42 @@ faqModal.addEventListener('click', function (e) {
   if (e.target === faqModal) closeFAQ();
 });
 
+function buildMailto({ user, domain, plus, subject, body }) {
+  const address = user + (plus ? `+${plus}` : '') + '@' + domain;
+  return (
+    'mailto:' +
+    address +
+    '?subject=' + encodeURIComponent(subject) +
+    '&body=' + encodeURIComponent(body)
+  );
+}
+
 const links = {
   register: "https://forms.gle/YEDzSUoqXq4NubB86",
   HackClub: "https://hackclub.com",
   Instagram: "https://instagram.com/hackclub.bss",
-  email: "mailto:hackclub.bss+general@gmail.com?subject=Hack%20Club%20Inquiry&body=Hi%20Hack%20Club%20Organizers%2C%0D%0A%0D%0AI%27m%20interested%20in%20joining%20Hack%20Club%20or%20learning%20more%20about%20it.%20Could%20you%20please%20share%20more%20information%3F%0D%0A%0D%0AThank%20you%21",
-  email_Brilliant: "mailto:hackclub.bss+brilliant@gmail.com?subject=Brilliant%20Premium%20Access%20Request&body=Hi%20Hack%20Club%20Organizers%2C%0D%0A%0D%0AI%20would%20like%20to%20request%20access%20to%20Brilliant%20Premium.%20Here%20are%20my%20details%3A%0D%0A%0D%0AName%3A%20%0D%0ASchool%20Email%3A%20%0D%0AReason%20for%20Request%3A%20%0D%0A%0D%0AThanks!",
+  email: buildMailto({
+    user: 'hackclub.bss',
+    plus: 'general',
+    domain: 'gmail.com',
+    subject: 'Hack Club Inquiry',
+    body:
+      "Hi Hack Club Organizers,\n\n" +
+      "I'm interested in joining Hack Club or learning more about it. " +
+      "Could you please share more information?\n\n" +
+      "Thank you!"
+  }),
+  email_Brilliant: buildMailto({
+    user: 'hackclub.bss',
+    plus: 'brilliant',
+    domain: 'gmail.com',
+    subject: 'Brilliant Premium Access Request',
+    body:
+      "Hi Hack Club Organizers,\n\n" +
+      "I would like to request access to Brilliant Premium.\n\n" +
+      "Name:\nSchool Email:\nReason for Request:\n\n" +
+      "Thanks!"
+  }),
   COC: "https://hackclub.com/conduct"
 };
 
