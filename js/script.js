@@ -22,42 +22,30 @@ themeToggle.addEventListener('click', () => {
   setIcon(!isDark);
 });
 
-const faqButton = document.getElementById('faq-button');
-const faqModal = document.getElementById('faq-modal');
+const baseModal = document.getElementById('base-modal');
+const modalSections = document.querySelectorAll('.modal-section');
 
-faqButton.addEventListener('click', (e) => {
-  e.preventDefault();
-  faqModal.style.display = 'flex';
+document.querySelectorAll('[data-modal]').forEach(trigger => {
+  trigger.addEventListener('click', () => {
+    modalSections.forEach(s => (s.style.display = 'none'));
+    const section = document.getElementById(`modal-${trigger.dataset.modal}`);
+    if (section) section.style.display = 'block';
+    baseModal.style.display = 'flex';
+  });
 });
 
-function closeFAQ() {
-  faqModal.style.display = 'none';
+function closeModal() {
+  baseModal.style.display = 'none';
+  modalSections.forEach(s => (s.style.display = 'none'));
 }
 
-faqModal.addEventListener('click', (e) => {
-  if (e.target === faqModal) closeFAQ();
+baseModal.addEventListener('click', e => {
+  if (e.target === baseModal) closeModal();
 });
 
-const teamButton = document.getElementById('team-button');
-const teamModal = document.getElementById('team-modal');
-
-teamButton.addEventListener('click', (e) => {
-  e.preventDefault();
-  teamModal.style.display = 'flex';
-});
-
-function closeTeam() {
-  teamModal.style.display = 'none';
-}
-
-teamModal.addEventListener('click', (e) => {
-  if (e.target === teamModal) closeTeam();
-});
-
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    if (faqModal.style.display === 'flex') closeFAQ();
-    if (teamModal.style.display === 'flex') closeTeam();
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && baseModal.style.display === 'flex') {
+    closeModal();
   }
 });
 
@@ -72,9 +60,9 @@ function buildMailto({ user, domain, plus, subject, body }) {
 }
 
 const links = {
-  register: "https://forms.gle/YEDzSUoqXq4NubB86",
-  HackClub: "https://hackclub.com",
-  Instagram: "https://instagram.com/hackclub.bss",
+  register: 'https://forms.gle/YEDzSUoqXq4NubB86',
+  HackClub: 'https://hackclub.com',
+  Instagram: 'https://instagram.com/hackclub.bss',
   email: buildMailto({
     user: 'hackclub.bss',
     plus: 'general',
@@ -84,7 +72,7 @@ const links = {
       "Hi Hack Club Organizers,\n\n" +
       "I'm interested in joining Hack Club or learning more about it. " +
       "Could you please share more information?\n\n" +
-      "Thank you!"
+      'Thank you!'
   }),
   email_Brilliant: buildMailto({
     user: 'hackclub.bss',
@@ -93,17 +81,16 @@ const links = {
     subject: 'Brilliant Premium Access Request',
     body:
       "Hi Hack Club Organizers,\n\n" +
-      "I would like to request access to Brilliant Premium.\n\n" +
-      "Name:\nSchool Email:\nReason for Request:\n\n" +
-      "Thanks!"
+      'I would like to request access to Brilliant Premium.\n\n' +
+      'Name:\nSchool Email:\nReason for Request:\n\n' +
+      'Thanks!'
   }),
-  COC: "https://hackclub.com/conduct"
+  COC: 'https://hackclub.com/conduct'
 };
 
 document.querySelectorAll('[data-link]').forEach(el => {
   const key = el.getAttribute('data-link');
   const url = links[key];
-
   if (url) {
     el.setAttribute('href', url);
     if (url.startsWith('http') || url.startsWith('mailto')) {
