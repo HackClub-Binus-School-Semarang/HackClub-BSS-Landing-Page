@@ -24,15 +24,41 @@ themeToggle.addEventListener('click', () => {
 
 const faqButton = document.getElementById('faq-button');
 const faqModal = document.getElementById('faq-modal');
+
 faqButton.addEventListener('click', (e) => {
   e.preventDefault();
   faqModal.style.display = 'flex';
 });
+
 function closeFAQ() {
   faqModal.style.display = 'none';
 }
-faqModal.addEventListener('click', function (e) {
+
+faqModal.addEventListener('click', (e) => {
   if (e.target === faqModal) closeFAQ();
+});
+
+const teamButton = document.getElementById('team-button');
+const teamModal = document.getElementById('team-modal');
+
+teamButton.addEventListener('click', (e) => {
+  e.preventDefault();
+  teamModal.style.display = 'flex';
+});
+
+function closeTeam() {
+  teamModal.style.display = 'none';
+}
+
+teamModal.addEventListener('click', (e) => {
+  if (e.target === teamModal) closeTeam();
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    if (faqModal.style.display === 'flex') closeFAQ();
+    if (teamModal.style.display === 'flex') closeTeam();
+  }
 });
 
 function buildMailto({ user, domain, plus, subject, body }) {
@@ -84,11 +110,5 @@ document.querySelectorAll('[data-link]').forEach(el => {
       el.setAttribute('target', '_blank');
       el.setAttribute('rel', 'noopener noreferrer');
     }
-  }
-});
-
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && faqModal.style.display === 'flex') {
-    closeFAQ();
   }
 });
