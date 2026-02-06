@@ -240,7 +240,6 @@ a:focus {
   border: 0;
 }
 
-/* Default: float top-left (for desktops) */
 #flag-link {
   position: absolute;
   top: 0;
@@ -255,7 +254,6 @@ a:focus {
   border: 0;
 }
 
-/* Mobile and Tablet: show inline above content */
 @media (max-width: 900px) {
 #flag-link {
   position: relative;
