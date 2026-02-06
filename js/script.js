@@ -5,49 +5,56 @@ const sunIcon = '<circle cx="12" cy="12" r="5"/><g stroke="currentColor" stroke-
 const moonIcon = '<path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/>';
 
 function setIcon(isDark) {
-  themeIcon.innerHTML = isDark ? sunIcon : moonIcon;
+  if (themeIcon) {
+    themeIcon.innerHTML = isDark ? sunIcon : moonIcon;
+  }
 }
 
 const userPref = localStorage.getItem('theme');
-const systemPrefDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+const systemPrefDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
 const isStoredDark = userPref === 'dark' || (!userPref && systemPrefDark);
 document.body.classList.add(isStoredDark ? 'dark-theme' : 'light-theme');
 setIcon(isStoredDark);
 
-themeToggle.addEventListener('click', () => {
-  const isDark = document.body.classList.contains('dark-theme');
-  document.body.classList.toggle('dark-theme', !isDark);
-  document.body.classList.toggle('light-theme', isDark);
-  localStorage.setItem('theme', isDark ? 'light' : 'dark');
-  setIcon(!isDark);
-});
+if (themeToggle) {
+  themeToggle.addEventListener('click', () => {
+    const isDark = document.body.classList.contains('dark-theme');
+    document.body.classList.toggle('dark-theme', !isDark);
+    document.body.classList.toggle('light-theme', isDark);
+    localStorage.setItem('theme', isDark ? 'light' : 'dark');
+    setIcon(!isDark);
+  });
+}
 
 const baseModal = document.getElementById('base-modal');
 const modalSections = document.querySelectorAll('.modal-section');
 
-document.querySelectorAll('[data-modal]').forEach(trigger => {
-  trigger.addEventListener('click', () => {
-    modalSections.forEach(s => (s.style.display = 'none'));
-    const section = document.getElementById(`modal-${trigger.dataset.modal}`);
-    if (section) section.style.display = 'block';
-    baseModal.style.display = 'flex';
+if (baseModal && modalSections.length) {
+  document.querySelectorAll('[data-modal]').forEach(trigger => {
+    trigger.addEventListener('click', e => {
+      e.preventDefault();
+      modalSections.forEach(s => (s.style.display = 'none'));
+      const section = document.getElementById(`modal-${trigger.dataset.modal}`);
+      if (section) section.style.display = 'block';
+      baseModal.style.display = 'flex';
+    });
   });
-});
 
-function closeModal() {
-  baseModal.style.display = 'none';
-  modalSections.forEach(s => (s.style.display = 'none'));
-}
-
-baseModal.addEventListener('click', e => {
-  if (e.target === baseModal) closeModal();
-});
-
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape' && baseModal.style.display === 'flex') {
-    closeModal();
+  function closeModal() {
+    baseModal.style.display = 'none';
+    modalSections.forEach(s => (s.style.display = 'none'));
   }
-});
+
+  baseModal.addEventListener('click', e => {
+    if (e.target === baseModal) closeModal();
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && baseModal.style.display === 'flex') {
+      closeModal();
+    }
+  });
+}
 
 function buildMailto({ user, domain, plus, subject, body }) {
   const address = user + (plus ? `+${plus}` : '') + '@' + domain;
