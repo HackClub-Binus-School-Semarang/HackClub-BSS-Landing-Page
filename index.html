@@ -39,67 +39,72 @@
     <a data-link="email_Brilliant" class="link-button">Get Brilliant premium for free!</a>
     <a data-link="email" class="link-button">Contact on Email</a>
     <a href="#" class="link-button" style="opacity: 0.6; pointer-events: none;">Meeting Info – To be announced soon</a>
-    <a href="#" class="link-button" id="team-button">Our Team</a>
-    <a href="#" class="link-button" id="faq-button">FAQ – About Our Club</a>
+    <a href="#" class="link-button" data-modal="team">Our Team</a>
+    <a href="#" class="link-button" data-modal="faq">FAQ – About Our Club</a>
     <a data-link="COC" class="link-button">Code of Conduct</a>
 
     <div class="footer">Hack Club @ Binus School Semarang</div>
   </div>
 
-  <div id="faq-modal">
+  <div id="base-modal">
     <div class="content">
-      <h2>FAQ – About Hack Club @ Binus School Semarang</h2>
-      <ul style="text-align: left; line-height: 1.6; margin-top: 1rem;">
-        <li><strong>What is Hack Club @ Binus School Semarang?</strong><br>
-        HackClub @ Binus School Semarang is a student-led makers and coding club where students come together to explore technology, learn to code, build hardware and software projects, and collaborate on creative ideas.</li>
-        
-        <li><strong>Do I need to know how to code to join?</strong><br>
-        Not at all! Hack Club @ Binus School Semarang welcomes everyone who is commited to learn and dedicate their time.</li>
-        
-        <li><strong>What do you do in meetings?</strong><br>
-        Workshops, demos, and project time.</li>
-        
-        <li><strong>When and where do you meet?</strong><br>
-        Schedule will be announced soon. Stay Tuned!</li>
-        
-        <li><strong>Who can join?</strong><br>
-        Any student from Binus School Semarang is welcome.</li>
-        
-        <li><strong>Is there a membership fee?</strong><br>
-        No, joining Hack Club is completely free.</li>
+      <div id="modal-faq" class="modal-section">
+        <h2>FAQ – About Hack Club @ Binus School Semarang</h2>
+        <ul style="text-align:left; line-height:1.6; margin-top:1rem;">
+          <li><strong>What is Hack Club @ Binus School Semarang?</strong><br>
+          HackClub @ Binus School Semarang is a student-led makers and coding club where students come together to explore technology, learn to code, build hardware and software projects, and collaborate on creative ideas.</li>
 
-        <li><strong>How can I get free access to Brilliant Premium?</strong><br>
-        You can get free access to Brilliant Premium by becoming a Hack Club member. <a data-link="email_Brilliant">Contact the club organizers</a> to verify your membership.</li>
-        
-        <li><strong>How can I join?</strong><br>
-        Use the <a data-link="register" target="_blank" rel="noopener noreferrer">form</a>. If you have questions, contact us via <a data-link="email">email</a>.</li>
-      </ul>
-      <button onclick="closeFAQ()" class="faq-close-btn">Close</button>
-    </div>
-  </div>
+          <li><strong>Do I need to know how to code to join?</strong><br>
+          Not at all! Hack Club @ Binus School Semarang welcomes everyone who is commited to learn and dedicate their time.</li>
 
-  <div id="team-modal">
-    <div class="content">
-      <h2>Our Team</h2>
+          <li><strong>What do you do in meetings?</strong><br>
+          Workshops, demos, and project time.</li>
 
-      <div class="team-grid">
-        <div class="team-card">
-          <h3>Co-Founder & President</h3>
-          <p class="name"><a href="https://rainier-ps.github.io/Personal-Website/">Rainier Pearson Saputra</a></p>
-        </div>
+          <li><strong>When and where do you meet?</strong><br>
+          Schedule will be announced soon. Stay Tuned!</li>
 
-        <div class="team-card">
-          <h3>Co-Leader</h3>
-          <p class="name">Kenan</p>
-        </div>
-        
-        <div class="team-card">
-          <h3> Supervisor</h3>
-          <p class="name">Mr. Aan</p>
+          <li><strong>Who can join?</strong><br>
+          Any student from Binus School Semarang is welcome.</li>
+
+          <li><strong>Is there a membership fee?</strong><br>
+          No, joining Hack Club is completely free.</li>
+
+          <li><strong>How can I get free access to Brilliant Premium?</strong><br>
+          You can get free access to Brilliant Premium by becoming a Hack Club member.
+          <a data-link="email_Brilliant">Contact the club organizers</a>.</li>
+
+          <li><strong>How can I join?</strong><br>
+          Use the <a data-link="register" target="_blank" rel="noopener noreferrer">form</a>.
+          If you have questions, contact us via <a data-link="email">email</a>.</li>
+        </ul>
+      </div>
+
+      <div id="modal-team" class="modal-section">
+        <h2>Our Team</h2>
+
+        <div class="team-grid">
+          <div class="team-card">
+            <h3>Co-Founder & President</h3>
+            <p class="name">
+              <a href="https://rainier-ps.github.io/Personal-Website/" class="no-decoration">
+                Rainier Pearson Saputra
+              </a>
+            </p>
+          </div>
+
+          <div class="team-card">
+            <h3>Co-Leader</h3>
+            <p class="name">Kenan</p>
+          </div>
+
+          <div class="team-card">
+            <h3>Supervisor</h3>
+            <p class="name">Mr. Aan</p>
+          </div>
         </div>
       </div>
 
-      <button onclick="closeTeam()" class="faq-close-btn">Close</button>
+      <button class="faq-close-btn" onclick="closeModal()">Close</button>
     </div>
   </div>
 
